@@ -1,0 +1,17 @@
+[
+    {
+        "type": "item",
+        "id": "itemone",
+        "name": "Item One"
+    },
+    {
+        "type": "block/gemblock",
+        "id": "blocktwo",
+        "name": "Block Two"
+    },
+    {
+        "type": "block/gemblock",
+        "id": "blockthree",
+        "name": "Block Three"
+    }
+]
