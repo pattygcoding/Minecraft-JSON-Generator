@@ -1,17 +1,22 @@
 [
-    {
-        "type": "item",
-        "id": "itemone",
-        "name": "Item One"
-    },
-    {
-        "type": "block/gemblock",
-        "id": "blocktwo",
-        "name": "Block Two"
-    },
-    {
-        "type": "block/gemblock",
-        "id": "blockthree",
-        "name": "Block Three"
-    }
+    { "type": "item", "id": "iron_ingot", "name": "Iron Ingot" },
+    { "type": "item", "id": "gold_ingot", "name": "Gold Ingot" },
+    { "type": "item/gem", "id": "ruby", "name": "Ruby", "gem_block": "ruby_block" },
+    { "type": "item/gem", "id": "sapphire", "name": "Sapphire", "gem_block": "sapphire_block" },
+    { "type": "item/gem", "id": "emerald", "name": "Emerald", "gem_block": "emerald_block" },
+    { "type": "item/gem", "id": "amethyst", "name": "Amethyst", "gem_block": "amethyst_block" },
+    { "type": "item/gem", "id": "topaz", "name": "Topaz", "gem_block": "topaz_block" },
+    { "type": "item/gem", "id": "opal", "name": "Opal", "gem_block": "opal_block" },
+    { "type": "item/gem", "id": "peridot", "name": "Peridot", "gem_block": "peridot_block" },
+    { "type": "item/gem", "id": "onyx", "name": "Onyx", "gem_block": "onyx_block" },
+    { "type": "block", "id": "copper_block", "name": "Copper Block" },
+    { "type": "block", "id": "silver_block", "name": "Silver Block" },
+    { "type": "block/gemblock", "id": "ruby_block", "name": "Ruby Block", "gem": "ruby" },
+    { "type": "block/gemblock", "id": "sapphire_block", "name": "Sapphire Block", "gem": "sapphire" },
+    { "type": "block/gemblock", "id": "emerald_block", "name": "Emerald Block", "gem": "emerald" },
+    { "type": "block/gemblock", "id": "amethyst_block", "name": "Amethyst Block", "gem": "amethyst" },
+    { "type": "block/gemblock", "id": "topaz_block", "name": "Topaz Block", "gem": "topaz" },
+    { "type": "block/gemblock", "id": "opal_block", "name": "Opal Block", "gem": "opal" },
+    { "type": "block/gemblock", "id": "peridot_block", "name": "Peridot Block", "gem": "peridot" },
+    { "type": "block/gemblock", "id": "onyx_block", "name": "Onyx Block", "gem": "onyx" }
 ]

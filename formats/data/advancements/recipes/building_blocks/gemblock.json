@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "{mod_name}:{id}"
+        ]
+    },
+    "criteria": {
+        "has_{gem}": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "{mod_name}:{gem}"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "{mod_name}:{id}"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_{gem}",
+            "has_the_recipe"
+        ]
+    ]
+}

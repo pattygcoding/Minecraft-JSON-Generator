@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "suprememc:onyx"
+        }
+    ],
+    "result": {
+        "item": "suprememc:onyx",
+        "count": 9
+    }
+}

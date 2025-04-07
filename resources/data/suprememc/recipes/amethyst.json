@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "suprememc:amethyst"
+        }
+    ],
+    "result": {
+        "item": "suprememc:amethyst",
+        "count": 9
+    }
+}

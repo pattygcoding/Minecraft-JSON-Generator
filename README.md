@@ -19,5 +19,9 @@ python main.py --delete
 ```
 
 ## Types
-- "item": Basic items such as gems or craftables
 - "block/gemblock": Gem blocks (like diamond blocks)
+    - "gem": The gem of the gem block to craft with
+
+- "item": Basic items
+- "item/gem": Gems such as diamonds that can be crafted into blocks or tools
+    - "gemblock": The gem block that the item can be crafted into

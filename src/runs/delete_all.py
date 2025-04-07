@@ -19,6 +19,7 @@ def delete_all_json_in_resources(mod_name):
                 # If it's in the exclusions map, rewrite instead of delete
                 if rel_path in exclusions:
                     try:
+                        os.makedirs(os.path.dirname(file_path), exist_ok=True)
                         with open(file_path, "w") as f:
                             f.write(exclusions[rel_path])
                         print(f"Rewritten (preserved): {file_path}")
@@ -39,3 +40,15 @@ def delete_all_json_in_resources(mod_name):
             print(f" - {path}")
     else:
         print("\nNo JSON files found to delete (excluding mapped exclusions).")
+
+    # Also ensure any exclusions that didn't exist yet get created
+    for rel_path, content in exclusions.items():
+        abs_path = os.path.join(resources_dir, rel_path)
+        if not os.path.exists(abs_path):
+            try:
+                os.makedirs(os.path.dirname(abs_path), exist_ok=True)
+                with open(abs_path, "w") as f:
+                    f.write(content)
+                print(f"Created missing excluded file: {abs_path}")
+            except Exception as e:
+                print(f"Failed to create excluded file {abs_path}: {e}")

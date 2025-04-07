@@ -1,5 +1,5 @@
-import os
 from src.tags.lang import update_lang_file
+from src.processes.processes import handle_type_case
 
 def process_entries(inputs, template_map, mod_name):
     if not isinstance(inputs, list):
@@ -21,30 +21,11 @@ def process_entries(inputs, template_map, mod_name):
             print(f"Unsupported type: {item_type} (skipping)")
             continue
 
-        for tmpl in type_info.get("templates", []):
-            template_path = tmpl["source"]
-            output_template = tmpl["output"]
+        if not handle_type_case(item_type, type_info, mod_name, **input_obj):
+            print(f"Warning: No case handler for type: {item_type} (skipping {item_id})")
+            continue
 
-            # Inject mod_name into output path
-            output_dir = output_template.replace("{mod_name}", mod_name)
-            output_path = os.path.join(output_dir, f"{item_id}.json")
-
-            try:
-                with open(template_path, "r") as f:
-                    template = f.read()
-
-                rendered = template.replace("{mod_name}", mod_name).replace("{id}", item_id)
-
-                os.makedirs(os.path.dirname(output_path), exist_ok=True)
-
-                with open(output_path, "w") as f:
-                    f.write(rendered)
-
-                print(f"Generated {output_path}")
-            except Exception as e:
-                print(f"Error processing template {template_path} for {item_id}: {e}")
-
-        # Generate lang entry
+        # Add language key
         category = item_type.split("/")[0]
         lang_key = f"{category}.{mod_name}.{item_id}"
         lang_entries[lang_key] = item_name
