@@ -1,13 +1,6 @@
 {
-  "replace": false,
-  "values": [
-    "suprememc:ruby_block",
-    "suprememc:sapphire_block",
-    "suprememc:emerald_block",
-    "suprememc:amethyst_block",
-    "suprememc:topaz_block",
-    "suprememc:opal_block",
-    "suprememc:peridot_block",
-    "suprememc:onyx_block"
-  ]
+    "replace": false,
+    "values": [
+
+    ]
 }

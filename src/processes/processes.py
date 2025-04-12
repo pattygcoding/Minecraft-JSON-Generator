@@ -6,7 +6,7 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
     item_id = kwargs.get("id")
 
     required_fields = required_fields_map.get(item_type, [])
-    missing = [field for field in required_fields if not kwargs.get(field)]
+    missing = [field for field in required_fields if field not in kwargs]
     if missing:
         print(f"Error: missing required field(s) {missing} for type '{item_type}' (skipping {item_id or 'unknown'})")
         return False
@@ -14,8 +14,19 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
     for tmpl in type_info.get("templates", []):
         if "tag_append" in tmpl:
             tag_path = tmpl["tag_append"]
-            value_template = tmpl.get("value_format", "{id}")
-            value = value_template.format(**kwargs, mod_name=mod_name)
+
+            # Build a default value_format using all required fields
+            default_format = " - ".join(f"{{{field}}}" for field in required_fields)
+            value_template = tmpl.get("value_format", default_format)
+
+            # Build the replacements dict
+            replacements = {
+                **kwargs,
+                "mod_name": mod_name,
+                "id": item_id
+            }
+
+            value = value_template.format(**replacements)
 
             abs_path = os.path.join(tag_path)
             os.makedirs(os.path.dirname(abs_path), exist_ok=True)
@@ -44,10 +55,19 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
             with open(template_path, "r") as f:
                 template = f.read()
 
+            # Build the full replacements dict
+            replacements = {
+                **kwargs,
+                "mod_name": mod_name,
+                "id": item_id
+            }
+
+            # Replace all {key} with value
+            for key in required_fields + ["mod_name", "id"]:
+                if key in replacements:
+                    template = template.replace(f"{{{key}}}", str(replacements[key]))
+
             rendered = template
-            for key, value in kwargs.items():
-                rendered = rendered.replace(f"{{{{{key}}}}}", str(value))
-            rendered = rendered.replace("{mod_name}", mod_name).replace("{id}", item_id)
 
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             with open(output_path, "w") as f:

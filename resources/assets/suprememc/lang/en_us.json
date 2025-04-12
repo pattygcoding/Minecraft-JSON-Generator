@@ -1,22 +1,3 @@
 {
-    "item.suprememc.iron_ingot": "Iron Ingot",
-    "item.suprememc.gold_ingot": "Gold Ingot",
-    "item.suprememc.ruby": "Ruby",
-    "item.suprememc.sapphire": "Sapphire",
-    "item.suprememc.emerald": "Emerald",
-    "item.suprememc.amethyst": "Amethyst",
-    "item.suprememc.topaz": "Topaz",
-    "item.suprememc.opal": "Opal",
-    "item.suprememc.peridot": "Peridot",
-    "item.suprememc.onyx": "Onyx",
-    "block.suprememc.copper_block": "Copper Block",
-    "block.suprememc.silver_block": "Silver Block",
-    "block.suprememc.ruby_block": "Ruby Block",
-    "block.suprememc.sapphire_block": "Sapphire Block",
-    "block.suprememc.emerald_block": "Emerald Block",
-    "block.suprememc.amethyst_block": "Amethyst Block",
-    "block.suprememc.topaz_block": "Topaz Block",
-    "block.suprememc.opal_block": "Opal Block",
-    "block.suprememc.peridot_block": "Peridot Block",
-    "block.suprememc.onyx_block": "Onyx Block"
+
 }

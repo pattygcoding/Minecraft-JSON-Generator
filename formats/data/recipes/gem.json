@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         {
-            "item": "{mod_name}:{id}"
+            "item": "{mod_name}:{gem_block}"
         }
     ],
     "result": {
