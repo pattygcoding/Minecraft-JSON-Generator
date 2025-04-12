@@ -11,7 +11,7 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "{mod_name}:{gem_block}"
+                        "item": "{mod_name_v}:{gem_block}"
                     }
                 ]
             }

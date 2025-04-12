@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AAA",
+        "A A",
+        "A A"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "suprememc:ruby"
+        }
+    },
+    
+    "result":
+    {
+        "item": "suprememc:ruby_leggings",
+        "count": 1
+    }
+}

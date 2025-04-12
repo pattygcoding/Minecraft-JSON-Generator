@@ -11,6 +11,9 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
         print(f"Error: missing required field(s) {missing} for type '{item_type}' (skipping {item_id or 'unknown'})")
         return False
 
+    is_vanilla = item_type.endswith("/vanilla")
+    mod_name_v = "minecraft" if is_vanilla else mod_name
+
     for tmpl in type_info.get("templates", []):
         if "tag_append" in tmpl:
             tag_path = tmpl["tag_append"]
@@ -23,6 +26,7 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
             replacements = {
                 **kwargs,
                 "mod_name": mod_name,
+                "mod_name_v": mod_name_v,
                 "id": item_id
             }
 
@@ -59,13 +63,13 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
             replacements = {
                 **kwargs,
                 "mod_name": mod_name,
+                "mod_name_v": "minecraft" if item_type.endswith("/vanilla") else mod_name,
                 "id": item_id
             }
 
             # Replace all {key} with value
-            for key in required_fields + ["mod_name", "id"]:
-                if key in replacements:
-                    template = template.replace(f"{{{key}}}", str(replacements[key]))
+            for key, value in replacements.items():
+                template = template.replace(f"{{{key}}}", str(value))
 
             rendered = template
 
