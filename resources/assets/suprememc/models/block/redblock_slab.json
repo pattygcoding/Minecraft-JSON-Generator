@@ -1,0 +1,9 @@
+{
+   "parent": "minecraft:block/slab",
+   "textures":
+   {
+       "bottom": "suprememc:block/redblock_slab",
+       "top": "suprememc:block/redblock_slab",
+       "side": "suprememc:block/redblock_slab"
+   }
+}

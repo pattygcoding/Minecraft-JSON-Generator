@@ -12,22 +12,29 @@ def delete_all(mod_name):
         for file in files:
             if file.endswith(".json"):
                 file_path = os.path.join(root, file)
-
-                # Compute relative path from 'resources' root
                 rel_path = os.path.relpath(file_path, resources_dir)
 
-                # If it's in the exclusions map, rewrite instead of delete
                 if rel_path in exclusions:
+                    new_content = exclusions[rel_path]
                     try:
                         os.makedirs(os.path.dirname(file_path), exist_ok=True)
-                        with open(file_path, "w") as f:
-                            f.write(exclusions[rel_path])
-                        print(f"Rewritten (preserved): {file_path}")
+                        if not os.path.exists(file_path):
+                            # File doesn't exist, create it
+                            with open(file_path, "w") as f:
+                                f.write(new_content)
+                            print(f"Created (preserved): {file_path}")
+                        else:
+                            # File exists, only rewrite if content differs
+                            with open(file_path, "r") as f:
+                                current_content = f.read()
+                            if current_content != new_content:
+                                with open(file_path, "w") as f:
+                                    f.write(new_content)
+                                print(f"Rewritten (preserved): {file_path}")
                     except Exception as e:
                         print(f"Failed to rewrite {file_path}: {e}")
                     continue
 
-                # Otherwise, delete the file
                 try:
                     os.remove(file_path)
                     deleted_files.append(file_path)

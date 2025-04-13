@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "criteria": {
+        "has_{full_block}": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "{mod_name_v}:{full_block}"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "has_the_recipe": {
+            "conditions": {
+                "recipe": "{mod_name}:{id}"
+            },
+            "trigger": "minecraft:recipe_unlocked"
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_{full_block}"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "{mod_name}:{id}"
+        ]
+    }
+}

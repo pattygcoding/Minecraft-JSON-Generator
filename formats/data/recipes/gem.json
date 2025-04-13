@@ -1,12 +1,11 @@
 {
     "type": "minecraft:crafting_shapeless",
+    "category": "misc",
     "ingredients": [
-        {
-            "item": "{mod_name_v}:{gem_block}"
-        }
+        "{mod_name_v}:{gem_block}"
     ],
     "result": {
-        "item": "{mod_name}:{id}",
-        "count": 9
+        "count": 9,
+        "id": "{mod_name}:{id}"
     }
 }

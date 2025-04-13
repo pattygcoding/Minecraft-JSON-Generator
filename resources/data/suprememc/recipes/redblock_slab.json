@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "key": {
+        "#": "suprememc:redblock"
+    },
+    "pattern": [
+        "###"
+    ],
+    "result": {
+        "count": 6,
+        "id": "suprememc:redblock_slab"
+    }
+}

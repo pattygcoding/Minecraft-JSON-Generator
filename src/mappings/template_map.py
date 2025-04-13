@@ -4,12 +4,23 @@ t = "templates"
 
 # Blocks
 block = {t: [blockstate(), model_block(), model_item("block"), loot_table("block")]}
-block_slab = {t: [blockstate("slab"), model_block(["block", "slab", "slab_top"]), model_item("block"), loot_table("slab")]}
+
+block_slab = {t: [
+    blockstate("slab"), 
+    model_block("slab"),
+    model_block("slab_top"),
+    model_item("block"), 
+    loot_table("slab"),
+    recipe("slab"),
+    recipe("slab_from_full_block_stonecutting"),
+    advancement("recipes/building_blocks/cut_block")
+    ]
+}
 
 # Block tool defaults
 block_tool_pickaxe = {t: block[t] + [tag("blocks/mineable/pickaxe")]}
 
-block_gemblock = {t: block_tool_pickaxe[t] + [recipe("gemblock"), advancement("recipes/building_blocks/gemblock")]}
+block_gemblock = {t: block_tool_pickaxe[t] + [recipe("gem_block"), advancement("recipes/building_blocks/gem_block")]}
 
 # Items
 item = {t: [model_item()]}
@@ -30,10 +41,15 @@ set_tools = {t: item_axe[t] + item_pickaxe[t] + item_shovel[t] + item_sword[t] +
 
 template_map = {
     "block": block,
+    "block/vanilla": block,
     "block/gemblock": block_gemblock,
     "block/gemblock/vanilla": block_gemblock,
+    "block/slab": block_slab,
+    "block/slab/vanilla": block_slab,
     "item": item,
+    "item/vanilla": item,
     "item/gem": item_gem,
+    "item/gem/vanilla": item_gem,
     "item/axe": item_axe,
     "item/axe/vanilla": item_axe,
     "item/pickaxe": item_pickaxe,

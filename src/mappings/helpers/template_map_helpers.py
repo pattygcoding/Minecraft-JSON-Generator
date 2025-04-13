@@ -16,8 +16,10 @@ def format_path(path):
 def recipe(name):
     return {
         "source": format_path(f"data/recipes/{name}.json"),
-        "output": data_path(f"recipes")
+        "output": "resources/data/{mod_name}/recipes",
+        "dynamic_filename": name
     }
+
 
 def advancement(path):
     return {
@@ -38,14 +40,10 @@ def model_item(name="item"):
     }
 
 def model_block(name="cube_all"):
-    names = [name] if isinstance(name, str) else name
-    return [
-        {
-            "source": format_path(f"assets/models/block/{n}.json"),
-            "output": asset_model("block")
-        }
-        for n in names
-    ]
+    return {
+        "source": format_path(f"assets/models/block/{name}.json"),
+        "output": asset_model("block")
+    }
 
 def blockstate(name="cube_all"):
     return {

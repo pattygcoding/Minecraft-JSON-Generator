@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "suprememc:block/redblock_slab" },
+        "type=top": { "model": "suprememc:block/redblock_slab_top" },
+        "type=double": { "model": "suprememc:block/redblock" }
+    }
+}

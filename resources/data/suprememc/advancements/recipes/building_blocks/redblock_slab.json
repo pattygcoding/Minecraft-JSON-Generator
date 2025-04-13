@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "criteria": {
+        "has_redblock": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "suprememc:redblock"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "has_the_recipe": {
+            "conditions": {
+                "recipe": "suprememc:redblock_slab"
+            },
+            "trigger": "minecraft:recipe_unlocked"
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_redblock"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "suprememc:redblock_slab"
+        ]
+    }
+}

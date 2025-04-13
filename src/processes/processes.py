@@ -17,6 +17,10 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
     mod_name_v = "minecraft" if is_vanilla else mod_name
 
     for tmpl in type_info.get("templates", []):
+        if not isinstance(tmpl, dict):
+            print(f"Skipping malformed template: {tmpl} (not a dict)")
+            continue
+    
         if "tag_append" in tmpl:
             tag_path = tmpl["tag_append"]
 
@@ -53,7 +57,25 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
         # Handle normal template rendering
         template_path = tmpl["source"]
         output_dir = tmpl["output"].replace("{mod_name}", mod_name)
-        output_path = os.path.join(output_dir, f"{item_id}.json")
+        
+        # support custom output file naming if dynamic_filename is present
+        if "dynamic_filename" in tmpl:
+            dyn_name = tmpl["dynamic_filename"]
+
+            if "full_block" in kwargs and "{full_block}" in dyn_name:
+                filename = dyn_name.format(**kwargs)
+            elif "full_block" in kwargs and dyn_name == "slab_from_full_block_stonecutting":
+                filename = f"{item_id}_from_{kwargs['full_block']}_stonecutting"
+            else:
+                if dyn_name in getJsonMap("types", "stonecutting"):
+                    filename = item_id  # clean default name
+                else:
+                    filename = f"{item_id}_{dyn_name}"
+
+            output_path = os.path.join(output_dir, f"{filename}.json")
+        else:
+            output_path = os.path.join(output_dir, f"{item_id}.json")
+
 
         try:
             with open(template_path, "r") as f:

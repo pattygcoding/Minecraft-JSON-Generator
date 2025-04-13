@@ -1,24 +1,16 @@
 {
     "type": "minecraft:crafting_shaped",
-    
-    "pattern":
-    [
-        "A A",
-        "AAA",
-        "AAA"
-    ],
-    
-    "key":
-    {
-        "A":
-        {
-            "item": "{mod_name_v}:{material}"
-        }
+    "category": "equipment",
+    "key": {
+        "X": "{mod_name_v}:{material}"
     },
-    
-    "result":
-    {
-        "item": "{mod_name}:{id}",
-        "count": 1
+    "pattern": [
+        "X X",
+        "XXX",
+        "XXX"
+    ],
+    "result": {
+        "count": 1,
+        "id": "{mod_name}:{id}"
     }
 }

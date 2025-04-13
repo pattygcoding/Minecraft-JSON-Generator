@@ -1,14 +1,13 @@
 {
     "type": "minecraft:crafting_shaped",
-    "category": "equipment",
+    "category": "building",
     "key": {
-        "#": "minecraft:stick",
-        "X": "#{mod_name}:{material}_tool_materials"
+        "#": "{mod_name_v}:{gem}"
     },
     "pattern": [
-        "XXX",
-        " # ",
-        " # "
+        "###",
+        "###",
+        "###"
     ],
     "result": {
         "count": 1,

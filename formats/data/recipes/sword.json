@@ -1,29 +1,17 @@
 {
     "type": "minecraft:crafting_shaped",
-    
-    "pattern":
-    [
-        "A",
-        "A",
-        "B"
-    ],
-    
-    "key":
-    {
-        "A":
-        {
-            "item": "{mod_name_v}:{material}"
-        },
-        
-        "B":
-        {
-            "item": "minecraft:stick"
-        }
+    "category": "equipment",
+    "key": {
+        "#": "minecraft:stick",
+        "X": "#{mod_name}:{material}_tool_materials"
     },
-    
-    "result":
-    {
-        "item": "{mod_name}:{id}",
-        "count": 1
+    "pattern": [
+        "X",
+        "X",
+        "#"
+    ],
+    "result": {
+        "count": 1,
+        "id": "{mod_name}:{id}"
     }
 }

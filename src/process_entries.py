@@ -1,7 +1,9 @@
 import os
 from mappings.lib import getJsonMap
-from src.tags.lang import update_lang_file
+from src.helpers.extract_json_values import extract_json_values
 from src.processes.processes import handle_type_case
+from src.tags.lang.lang import update_lang_file
+from src.tags.tools.tool_material_tags import update_tool_material_tags
 
 def process_entries(inputs, template_map, mod_name):
     if not isinstance(inputs, list):
@@ -9,6 +11,7 @@ def process_entries(inputs, template_map, mod_name):
 
     lang_entries = {}
     default_advancements = getJsonMap("advancements", "default")
+    tool_types = {"item/axe", "item/pickaxe", "item/sword", "item/hoe", "item/shovel"}
 
     for input_obj in inputs:
         item_type = input_obj.get("type")
@@ -20,40 +23,16 @@ def process_entries(inputs, template_map, mod_name):
             print(f"Skipping entry (missing type or id): {input_obj}")
             continue
 
-        # Handle sets like "set/armor"
+        # Handle sets like "set/armor", "set/tools"
         if item_type.startswith("set/"):
             set_templates = template_map.get(item_type)
             if not set_templates:
                 print(f"Unsupported set type: {item_type} (skipping)")
                 continue
 
-            # Extract unique recipe suffixes from recipe sources only
-            recipe_suffixes = set()
-            for t in set_templates["templates"]:
-                source_path = t.get("source", "")
-                if "/recipes/" in source_path and source_path.endswith(".json"):
-                    suffix = os.path.splitext(os.path.basename(source_path))[0]
+            json_values = extract_json_values(set_templates["templates"], default_advancements)
 
-                    # Remap 'default' filenames to real suffixes based on folder path
-                    if suffix == "default":
-                        for folder, mapping in default_advancements.items():
-                            if f"/{folder}/" in source_path:
-                                if isinstance(mapping, dict):
-                                    for keyword, resolved in mapping.items():
-                                        if keyword != "default" and keyword in source_path:
-                                            suffix = resolved
-                                            break
-                                    else:
-                                        suffix = mapping.get("default", "item")
-                                else:
-                                    suffix = mapping
-                                break
-                        else:
-                            suffix = default_advancements.get("default", "item")  # final fallback
-
-                    recipe_suffixes.add(suffix)
-
-            for suffix in recipe_suffixes:
+            for suffix in json_values:
                 type_key = f"item/{suffix}"
                 type_info = template_map.get(type_key)
 
@@ -61,8 +40,8 @@ def process_entries(inputs, template_map, mod_name):
                     print(f"Missing type info for {type_key} (skipping)")
                     continue
 
-                full_id = f"{base_id}_{suffix}"  # e.g. ruby_helmet
-                full_name = f"{base_name} {suffix.replace('_', ' ').title()}"  # Ruby Helmet
+                full_id = f"{base_id}_{suffix}"
+                full_name = f"{base_name} {suffix.replace('_', ' ').title()}"
 
                 success = handle_type_case(type_key, type_info, mod_name,
                     id=full_id,
@@ -72,12 +51,15 @@ def process_entries(inputs, template_map, mod_name):
 
                 if success:
                     lang_entries[f"item.{mod_name}.{full_id}"] = full_name
+
+                    if type_key in tool_types:
+                        update_tool_material_tags(mod_name, material)
                 else:
                     print(f"Failed to process: {full_id} ({type_key})")
 
-            continue  # done with set
+            continue
 
-        # Handle normal individual items
+        # Handle regular item types
         type_info = template_map.get(item_type)
         if not type_info:
             print(f"Unsupported type: {item_type} (skipping)")
@@ -86,6 +68,9 @@ def process_entries(inputs, template_map, mod_name):
         if handle_type_case(item_type, type_info, mod_name, **input_obj):
             category = item_type.split("/")[0]
             lang_entries[f"{category}.{mod_name}.{base_id}"] = base_name
+
+            if item_type in tool_types:
+                update_tool_material_tags(mod_name, material)
         else:
             print(f"Failed to process: {base_id} ({item_type})")
 

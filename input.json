@@ -1,9 +1,9 @@
 [
-    {
-        "type": "item/gem",
-        "id": "ruby",
-        "name": "Ruby",
-        "gem_block": "ruby_block",
-        "beacon_payment": true
-    }
+  {
+    "type": "block/slab",
+    "id": "redblock_slab",
+    "name": "Redblock Slab",
+    "full_block": "redblock",
+    "tool": "pickaxe"
+  }
 ]
