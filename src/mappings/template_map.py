@@ -10,7 +10,7 @@ block_gemblock = {t: block_tool_pickaxe[t] + [recipe("gemblock"), advancement("r
 
 # Items
 item = {t: [model_item()]}
-item_gem = {t: item[t] + [recipe("gem"), advancement("recipes/misc/gem"), tag("items/beacon_payment_items")]}
+item_gem = {t: item[t] + [recipe("gem"), advancement("recipes/misc/gem")]}
 item_axe = {t: item[t] + [recipe("axe"), advancement("recipes/tools/default")]}
 item_pickaxe = {t: item[t] + [recipe("pickaxe"), advancement("recipes/tools/default")]}
 item_shovel = {t: item[t] + [recipe("shovel"), advancement("recipes/tools/default")]}

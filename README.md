@@ -7,25 +7,25 @@ A utility for generating structured Minecraft JSON files for blocks, items, reci
 ## Renaming to Your Mod Name
 
 Replace the `new_mod_name` attribute in `config.json` with your mod name, then run:
-```python
+
 python main.py --changeModName
-```
+
 ---
 
 ## Sorting Tags and Language Files
 
 Sorts all values in tag JSONs and entries in `en_us.json` alphabetically:
-```python
+
 python main.py --sortTags
-```
+
 ---
 
 ## Clearing Existing JSON Files in `resources/`
 
-Deletes all generated JSON files under `resources/assets` and `resources/data`:
-```python
+Deletes all generated JSON files under `resources/assets` and `resources/data`, while preserving important tag and language files:
+
 python main.py --delete
-```
+
 ---
 
 ## Types
@@ -42,7 +42,10 @@ Each entry in your `input.json` must specify a valid `type`. These types corresp
 
 - **block/gemblock**  
   Blocks crafted from a gem (e.g., emerald block, ruby block).  
-  - Required fields: `id`, `name`, `gem`
+  - Required fields: `id`, `name`, `gem`  
+  - Optional fields:
+    - `pickaxe`: `"stone"` or `"iron"` — adds to `needs_stone_tool` or `needs_iron_tool`
+    - `beacon_block`: `true` — adds to `beacon_base_blocks`
 
 ---
 
@@ -54,7 +57,9 @@ Each entry in your `input.json` must specify a valid `type`. These types corresp
 
 - **item/gem**  
   Craftable gem items (e.g., ruby, diamond).  
-  - Required fields: `id`, `name`, `gem_block`
+  - Required fields: `id`, `name`, `gem_block`  
+  - Optional fields:
+    - `beacon_payment`: `true` — adds to `items/beacon_payment_items`
 
 - **Tool Items**  
   Types: `item/axe`, `item/hoe`, `item/pickaxe`, `item/shovel`, `item/sword`  
@@ -104,7 +109,7 @@ Set types automatically generate full sets of tool or armor entries based on a b
 
 ## Output Directory Structure
 
-Generated files are written to the following locations:
+Generated files are written to the following structure:
 
 resources/  
 ├── assets/  
@@ -115,34 +120,32 @@ resources/
 │       │   └── item/  
 │       └── lang/  
 └── data/  
+    ├── minecraft/  
+    │   └── tags/  
+    │       ├── blocks/  
+    │       └── items/  
     └── <mod_name>/  
         ├── recipes/  
         ├── advancements/  
-        └── tags/
-
-Tags for common Minecraft namespaces (like `minecraft:beacon_payment_items`) are also created under `data/minecraft/tags`.
+        └── loot_tables/
 
 ---
 
 ## Example Input
-
 [
   {
     "type": "item/gem",
     "id": "ruby",
     "name": "Ruby",
-    "gem_block": "ruby_block"
+    "gem_block": "ruby_block",
+    "beacon_payment": true
   },
   {
-    "type": "set/tools",
-    "id": "ruby",
-    "name": "Ruby",
-    "material": "ruby"
-  },
-  {
-    "type": "set/armor",
-    "id": "ruby",
-    "name": "Ruby",
-    "material": "ruby"
+    "type": "block/gemblock",
+    "id": "ruby_block",
+    "name": "Ruby Block",
+    "gem": "ruby",
+    "pickaxe": "iron",
+    "beacon_block": true
   }
 ]
