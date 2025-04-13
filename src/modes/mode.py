@@ -1,22 +1,22 @@
 import sys
 import json
 
-def handle_run_flags():
+def mode():
     if "--changeModName" in sys.argv:
-        from src.runs.change_mod_name import run_change_mod_name
-        run_change_mod_name()
+        from src.modes.change_mod_name.change_mod_name import change_mod_name
+        change_mod_name()
         return True
 
     if "--delete" in sys.argv:
-        from src.runs.delete_all import delete_all_json_in_resources
+        from src.modes.delete_all.delete_all import delete_all
         with open("config/modname.json", "r") as f:
             config = json.load(f)
         mod_name = config.get("mod_name")
-        delete_all_json_in_resources(mod_name)
+        delete_all(mod_name)
         return True
 
     if "--sortTags" in sys.argv:
-        from src.runs.sort_tags import sort_tag_files
+        from src.modes.sort_tags.sort_tags import sort_tag_files
         with open("config/modname.json", "r") as f:
             config = json.load(f)
         mod_name = config.get("mod_name")

@@ -1,10 +1,10 @@
 import json
-from src.runs.runs import handle_run_flags
+from src.modes.mode import mode
 from src.mappings.template_map import template_map
 from src.process_entries import process_entries
 
 # Handle run options first (see README for more info)
-if handle_run_flags():
+if mode():
     exit(0)
 
 # Load config

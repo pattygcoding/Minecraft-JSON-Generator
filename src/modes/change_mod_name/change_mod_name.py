@@ -23,7 +23,7 @@ def replace_all_in_directory(directory, old, new):
                 full_path = os.path.join(root, file)
                 replace_in_file(full_path, old, new)
 
-def run_change_mod_name():
+def change_mod_name():
     config = load_json("config/modname.json")
     mod_name = config.get("mod_name")
     new_mod_name = config.get("new_mod_name", "").strip()

@@ -1,7 +1,7 @@
 import os
 from src.mappings.tag_map import tag_map
 
-def delete_all_json_in_resources(mod_name):
+def delete_all(mod_name):
     resources_dir = "resources"
     deleted_files = []
 
