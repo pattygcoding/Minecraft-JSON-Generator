@@ -1,4 +1,23 @@
 [
-    { "type": "set/armor", "id": "ruby", "name": "Ruby", "material": "ruby" },
-    { "type": "set/tools", "id": "ruby", "name": "Ruby", "material": "ruby" }
+    {
+        "type": "block/gemblock",
+        "id": "ruby_block",
+        "name": "Ruby Block",
+        "gem": "ruby",
+        "pickaxe": "iron",
+        "beacon_block": true
+      },
+    {
+        "type": "block/gemblock",
+        "id": "sapphire_block",
+        "name": "Sapphire Block",
+        "gem": "sapphire",
+        "pickaxe": "stone"
+      },
+    {
+        "type": "block/gemblock",
+        "id": "emerald_block",
+        "name": "Emerald Block",
+        "gem": "emerald"
+      }
 ]

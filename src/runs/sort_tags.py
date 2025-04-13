@@ -1,10 +1,10 @@
 import os
 import json
-from src.mappings.clearfiles_map import get_clearfiles_keys
+from src.mappings.tag_map import get_tag_keys
 
 def sort_tag_files(mod_name):
     resources_dir = "resources"
-    files_to_sort = get_clearfiles_keys(mod_name)
+    files_to_sort = get_tag_keys(mod_name)
 
     for rel_path in files_to_sort:
         full_path = os.path.join(resources_dir, rel_path)
@@ -17,7 +17,7 @@ def sort_tag_files(mod_name):
             with open(full_path, "r") as f:
                 data = json.load(f)
 
-            sorted_data = dict(sorted(data.items()))  # Sort by key
+            sorted_data = dict(sorted(data.items())) 
 
             with open(full_path, "w") as f:
                 json.dump(sorted_data, f, indent=4, ensure_ascii=False)

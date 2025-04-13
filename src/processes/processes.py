@@ -1,6 +1,7 @@
 import os
 import json
 from src.mappings.required_fields_map import required_fields_map
+from src.processes.optional.optional_handling import handle_optional_tags
 
 def handle_type_case(item_type, type_info, mod_name, **kwargs):
     item_id = kwargs.get("id")
@@ -18,11 +19,9 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
         if "tag_append" in tmpl:
             tag_path = tmpl["tag_append"]
 
-            # Build a default value_format using all required fields
             default_format = " - ".join(f"{{{field}}}" for field in required_fields)
             value_template = tmpl.get("value_format", default_format)
 
-            # Build the replacements dict
             replacements = {
                 **kwargs,
                 "mod_name": mod_name,
@@ -59,15 +58,13 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
             with open(template_path, "r") as f:
                 template = f.read()
 
-            # Build the full replacements dict
             replacements = {
                 **kwargs,
                 "mod_name": mod_name,
-                "mod_name_v": "minecraft" if item_type.endswith("/vanilla") else mod_name,
+                "mod_name_v": mod_name_v,
                 "id": item_id
             }
 
-            # Replace all {key} with value
             for key, value in replacements.items():
                 template = template.replace(f"{{{key}}}", str(value))
 
@@ -80,5 +77,7 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
             print(f"Generated {output_path}")
         except Exception as e:
             print(f"Error processing template {template_path} for {item_id}: {e}")
+
+    handle_optional_tags(item_type, item_id, mod_name, **kwargs)
 
     return True

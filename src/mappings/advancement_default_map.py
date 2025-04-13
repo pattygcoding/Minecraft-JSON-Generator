@@ -1,5 +1,3 @@
-# src/config/suffix_map.py
-
 SUFFIX_MAP = {
     "combat": "sword",
     "tools": {

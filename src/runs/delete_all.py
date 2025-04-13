@@ -1,12 +1,12 @@
 import os
-from src.mappings.clearfiles_map import get_clearfiles_map
+from src.mappings.tag_map import tag_map
 
 def delete_all_json_in_resources(mod_name):
     resources_dir = "resources"
     deleted_files = []
 
     # Get exclusion mapping
-    exclusions = get_clearfiles_map(mod_name)
+    exclusions = tag_map(mod_name)
 
     for root, _, files in os.walk(resources_dir):
         for file in files:
@@ -27,7 +27,7 @@ def delete_all_json_in_resources(mod_name):
                         print(f"Failed to rewrite {file_path}: {e}")
                     continue
 
-                # Otherwise, delete
+                # Otherwise, delete the file
                 try:
                     os.remove(file_path)
                     deleted_files.append(file_path)
@@ -41,7 +41,7 @@ def delete_all_json_in_resources(mod_name):
     else:
         print("\nNo JSON files found to delete (excluding mapped exclusions).")
 
-    # Also ensure any exclusions that didn't exist yet get created
+    # Ensure excluded files exist (create if missing)
     for rel_path, content in exclusions.items():
         abs_path = os.path.join(resources_dir, rel_path)
         if not os.path.exists(abs_path):

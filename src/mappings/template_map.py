@@ -4,7 +4,9 @@ t = "templates"
 
 # Blocks
 block = {t: [blockstate(), model_block(), model_item("block"), loot_table("block")]}
-block_gemblock = {t: block[t] + [recipe("gemblock"), advancement("recipes/building_blocks/gemblock"), tag("blocks/beacon_base_blocks")]}
+block_tool_pickaxe = {t: block[t] + [tag("blocks/mineable/pickaxe")]}
+
+block_gemblock = {t: block_tool_pickaxe[t] + [recipe("gemblock"), advancement("recipes/building_blocks/gemblock")]}
 
 # Items
 item = {t: [model_item()]}
