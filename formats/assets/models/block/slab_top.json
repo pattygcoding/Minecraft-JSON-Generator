@@ -1,0 +1,9 @@
+{
+   "parent": "minecraft:block/slab",
+   "textures":
+   {
+       "bottom": "{mod_name_v}:block/{id}",
+       "top": "{mod_name_v}:block/{id}",
+       "side": "{mod_name_v}:block/{id}"
+   }
+}

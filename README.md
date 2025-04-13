@@ -6,7 +6,7 @@ A utility for generating structured Minecraft JSON files for blocks, items, reci
 
 ## Renaming to Your Mod Name
 
-Replace the `new_mod_name` attribute in `config.json` with your mod name, then run:
+Replace the `new_mod_name` attribute in `config/modname.json` with your mod name, then run:
 
 python main.py --changeModName
 

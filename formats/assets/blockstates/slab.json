@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "{mod_name}:block/{id}" },
+        "type=top": { "model": "{mod_name}:block/{id}_top" },
+        "type=double": { "model": "{mod_name}:block/{full_block}" }
+    }
+}

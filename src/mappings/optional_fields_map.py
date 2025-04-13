@@ -1,4 +1,12 @@
 optional_fields_map = {
+    "block/slab": {
+        "tool": {
+            "axe": "blocks/mineable/axe",
+            "hoe": "blocks/mineable/hoe",
+            "pickaxe": "blocks/mineable/pickaxe",
+            "shovel": "blocks/mineable/shovel"
+        }
+    },
     "block/gemblock": {
         "pickaxe": {
             "iron": "blocks/needs_iron_tool",

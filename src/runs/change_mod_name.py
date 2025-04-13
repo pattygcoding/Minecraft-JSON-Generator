@@ -24,12 +24,12 @@ def replace_all_in_directory(directory, old, new):
                 replace_in_file(full_path, old, new)
 
 def run_change_mod_name():
-    config = load_json("config.json")
+    config = load_json("config/modname.json")
     mod_name = config.get("mod_name")
     new_mod_name = config.get("new_mod_name", "").strip()
 
     if not new_mod_name:
-        raise ValueError("new_mod_name cannot be blank in config.json")
+        raise ValueError("new_mod_name cannot be blank in config/modname.json")
 
     old_path = os.path.join("resources", "assets", mod_name)
     new_path = os.path.join("resources", "assets", new_mod_name)
@@ -44,6 +44,6 @@ def run_change_mod_name():
 
     config["mod_name"] = new_mod_name
     config["new_mod_name"] = ""
-    save_json("config.json", config)
+    save_json("config/modname.json", config)
 
-    print(f"Updated config.json with new mod_name: {new_mod_name}")
+    print(f"Updated config/modname.json with new mod_name: {new_mod_name}")

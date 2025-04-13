@@ -38,10 +38,14 @@ def model_item(name="item"):
     }
 
 def model_block(name="cube_all"):
-    return {
-        "source": format_path(f"assets/models/block/{name}.json"),
-        "output": asset_model("block")
-    }
+    names = [name] if isinstance(name, str) else name
+    return [
+        {
+            "source": format_path(f"assets/models/block/{n}.json"),
+            "output": asset_model("block")
+        }
+        for n in names
+    ]
 
 def blockstate(name="cube_all"):
     return {

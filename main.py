@@ -8,7 +8,7 @@ if handle_run_flags():
     exit(0)
 
 # Load config
-with open("config.json", "r") as f:
+with open("config/modname.json", "r") as f:
     config = json.load(f)
 
 # Obtain the mod name

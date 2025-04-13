@@ -4,6 +4,9 @@ t = "templates"
 
 # Blocks
 block = {t: [blockstate(), model_block(), model_item("block"), loot_table("block")]}
+block_slab = {t: [blockstate("slab"), model_block(["block", "slab", "slab_top"]), model_item("block"), loot_table("slab")]}
+
+# Block tool defaults
 block_tool_pickaxe = {t: block[t] + [tag("blocks/mineable/pickaxe")]}
 
 block_gemblock = {t: block_tool_pickaxe[t] + [recipe("gemblock"), advancement("recipes/building_blocks/gemblock")]}
