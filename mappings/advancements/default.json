@@ -1,4 +1,4 @@
-SUFFIX_MAP = {
+{
     "combat": "sword",
     "tools": {
         "axe": "axe",

@@ -1,12 +1,13 @@
 import os
 import json
-from src.mappings.required_fields_map import required_fields_map
+from mappings.lib import getJsonMap
 from src.processes.optional.optional_handling import handle_optional_tags
-
+    
 def handle_type_case(item_type, type_info, mod_name, **kwargs):
     item_id = kwargs.get("id")
 
-    required_fields = required_fields_map.get(item_type, [])
+    required_fields = getJsonMap("fields", "required").get(item_type, [])
+
     missing = [field for field in required_fields if field not in kwargs]
     if missing:
         print(f"Error: missing required field(s) {missing} for type '{item_type}' (skipping {item_id or 'unknown'})")

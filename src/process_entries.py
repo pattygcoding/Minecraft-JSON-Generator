@@ -1,13 +1,14 @@
 import os
+from mappings.lib import getJsonMap
 from src.tags.lang import update_lang_file
 from src.processes.processes import handle_type_case
-from src.mappings.advancement_default_map import SUFFIX_MAP
 
 def process_entries(inputs, template_map, mod_name):
     if not isinstance(inputs, list):
         raise ValueError("input.json should be a list of objects")
 
     lang_entries = {}
+    default_advancements = getJsonMap("advancements", "default")
 
     for input_obj in inputs:
         item_type = input_obj.get("type")
@@ -35,7 +36,7 @@ def process_entries(inputs, template_map, mod_name):
 
                     # Remap 'default' filenames to real suffixes based on folder path
                     if suffix == "default":
-                        for folder, mapping in SUFFIX_MAP.items():
+                        for folder, mapping in default_advancements.items():
                             if f"/{folder}/" in source_path:
                                 if isinstance(mapping, dict):
                                     for keyword, resolved in mapping.items():
@@ -48,7 +49,7 @@ def process_entries(inputs, template_map, mod_name):
                                     suffix = mapping
                                 break
                         else:
-                            suffix = SUFFIX_MAP.get("default", "item")  # final fallback
+                            suffix = default_advancements.get("default", "item")  # final fallback
 
                     recipe_suffixes.add(suffix)
 

@@ -1,22 +1,18 @@
 import os
-import json
+from mappings.lib import getJsonMap
 from src.mappings.helpers.tag_map_helpers import *
 
-def tag_file_list_to_load(filename):
-    with open(os.path.join("mappings", "tags", filename)) as f:
-        return json.load(f)
-    
 def tag_map(mod_name):
     base = {
         os.path.join("assets", mod_name, "lang", "en_us.json"): JSON_FORMAT,
     }
 
-    for tag in tag_file_list_to_load("blocks.json"):
+    for tag in getJsonMap("tags", "blocks"):
         path = os.path.join("data", "minecraft", "tags", "blocks", f"{tag}.json")
         if path not in base:
             base[path] = TAG_FORMAT
     
-    for tag in tag_file_list_to_load("items.json"):
+    for tag in getJsonMap("tags", "items"):
         path = os.path.join("data", "minecraft", "tags", "items", f"{tag}.json")
         base[path] = TAG_FORMAT
 

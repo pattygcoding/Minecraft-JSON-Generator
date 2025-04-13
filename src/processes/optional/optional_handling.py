@@ -1,6 +1,6 @@
 import os
 import json
-from src.mappings.optional_fields_map import optional_fields_map
+from mappings.lib import getJsonMap
 
 def get_tag_path(tag_name):
     return os.path.join("resources/data/minecraft/tags", tag_name + ".json")
@@ -37,8 +37,10 @@ def remove_from_tag(tag_name, value):
     save_tag(tag_path, tag_data)
 
 def handle_optional_tags(item_type, item_id, mod_name, **kwargs):
+    optional_fields = getJsonMap("fields", "optional")
+    
     block_id = f"{mod_name}:{item_id}"
-    field_map = optional_fields_map.get(item_type, {})
+    field_map = optional_fields.get(item_type, {})
 
     for field_name, value_map in field_map.items():
         user_value = kwargs.get(field_name, None)

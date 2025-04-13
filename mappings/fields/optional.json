@@ -1,4 +1,4 @@
-optional_fields_map = {
+{
     "block/slab": {
         "tool": {
             "axe": "blocks/mineable/axe",
@@ -13,12 +13,12 @@ optional_fields_map = {
             "stone": "blocks/needs_stone_tool"
         },
         "beacon_block": {
-            True: "blocks/beacon_base_blocks"
+            "true": "blocks/beacon_base_blocks"
         }
     },
     "item/gem": {
         "beacon_payment": {
-            True: "items/beacon_payment_items"
+            "true": "items/beacon_payment_items"
         }
     }
 }
