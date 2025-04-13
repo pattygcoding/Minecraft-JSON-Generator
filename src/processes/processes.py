@@ -74,7 +74,13 @@ def handle_type_case(item_type, type_info, mod_name, **kwargs):
 
             output_path = os.path.join(output_dir, f"{filename}.json")
         else:
-            output_path = os.path.join(output_dir, f"{item_id}.json")
+            filename = item_id
+
+            if "model_name_suffix" in tmpl:
+                filename = f"{item_id}_{tmpl['model_name_suffix']}"
+
+            output_path = os.path.join(output_dir, f"{filename}.json")
+
 
 
         try:

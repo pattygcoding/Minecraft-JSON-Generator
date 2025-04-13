@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "key": {
+        "#": "{mod_name_v}:{full_block}"
+    },
+    "pattern": [
+        "##",
+        "##",
+        "##"
+    ],
+    "result": {
+        "count": 3,
+        "id": "{mod_name}:{id}"
+    }
+}

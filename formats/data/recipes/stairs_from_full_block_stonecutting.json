@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": "{mod_name_v}:{full_block}",
+    "result": {
+        "count": 1,
+        "id": "{mod_name}:{id}"
+    }
+}

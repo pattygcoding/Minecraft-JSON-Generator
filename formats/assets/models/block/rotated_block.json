@@ -1,0 +1,7 @@
+{
+   "parent": "minecraft:block/cube_column",
+   "textures": {
+       "end": "{mod_name}:block/{id}_top",
+       "side": "{mod_name}:block/{id}"
+   }
+}

@@ -1,0 +1,9 @@
+{
+    "parent": "minecraft:block/inner_stairs",
+    "textures": {
+        "bottom": "{mod_name_v}:block/{full_block}",
+        "side": "{mod_name_v}:block/{full_block}",
+        "top": "{mod_name_v}:block/{full_block}"
+        
+    }
+}

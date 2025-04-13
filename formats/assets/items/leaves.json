@@ -1,0 +1,12 @@
+{
+    "model": {
+        "type": "minecraft:model",
+        "model": "{mod_name}:block/{id}",
+        "tints": [
+            {
+                "type": "minecraft:constant",
+                "value": -12012264
+            }
+        ]
+    }
+}

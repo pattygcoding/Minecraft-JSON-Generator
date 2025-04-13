@@ -1,9 +1,8 @@
-[
-  {
-    "type": "block/slab",
-    "id": "redblock_slab",
-    "name": "Redblock Slab",
-    "full_block": "redblock",
-    "tool": "pickaxe"
-  }
+[{
+  "type": "block/button",
+  "id": "ruby_button",
+  "name": "Ruby Button",
+  "full_block": "ruby_button",
+  "wooden": true
+}
 ]

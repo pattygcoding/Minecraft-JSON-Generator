@@ -1,5 +1,42 @@
 {
+    "block/button": {
+        "wooden": {
+            "true": "wooden"
+        }
+    },
+    "block/door": {
+        "wooden": {
+            "true": "wooden"
+        }
+    },
+    "block/pressure_plate": {
+        "wooden": {
+            "true": "wooden"
+        }
+    },
     "block/slab": {
+        "tool": {
+            "axe": "blocks/mineable/axe",
+            "hoe": "blocks/mineable/hoe",
+            "pickaxe": "blocks/mineable/pickaxe",
+            "shovel": "blocks/mineable/shovel"
+        },
+        "wooden": {
+            "true": "wooden"
+        }
+    },
+    "block/stairs": {
+        "tool": {
+            "axe": "blocks/mineable/axe",
+            "hoe": "blocks/mineable/hoe",
+            "pickaxe": "blocks/mineable/pickaxe",
+            "shovel": "blocks/mineable/shovel"
+        },
+        "wooden": {
+            "true": "wooden"
+        }
+    },
+    "block/wall": {
         "tool": {
             "axe": "blocks/mineable/axe",
             "hoe": "blocks/mineable/hoe",

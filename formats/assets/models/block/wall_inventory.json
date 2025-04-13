@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/wall_inventory",
+    "textures": {
+        "wall": "{mod_name_v}:block/{full_block}"
+    }
+}

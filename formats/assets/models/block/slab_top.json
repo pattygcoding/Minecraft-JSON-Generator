@@ -1,9 +1,9 @@
 {
-   "parent": "minecraft:block/slab",
-   "textures":
-   {
-       "bottom": "{mod_name_v}:block/{id}",
-       "top": "{mod_name_v}:block/{id}",
-       "side": "{mod_name_v}:block/{id}"
-   }
+    "parent": "minecraft:block/slab_top",
+    "textures": {
+        "bottom": "{mod_name_v}:block/{full_block}",
+        "side": "{mod_name_v}:block/{full_block}",
+        "top": "{mod_name_v}:block/{full_block}"
+        
+    }
 }

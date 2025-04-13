@@ -1,11 +1,11 @@
 {
     "parent": "minecraft:recipes/root",
     "criteria": {
-        "has_redblock": {
+        "has_{full_block}": {
             "conditions": {
                 "items": [
                     {
-                        "items": "suprememc:redblock"
+                        "items": "{mod_name_v}:{full_block}"
                     }
                 ]
             },
@@ -13,7 +13,7 @@
         },
         "has_the_recipe": {
             "conditions": {
-                "recipe": "suprememc:redblock_slab"
+                "recipe": "{mod_name}:{id}"
             },
             "trigger": "minecraft:recipe_unlocked"
         }
@@ -21,12 +21,12 @@
     "requirements": [
         [
             "has_the_recipe",
-            "has_redblock"
+            "has_{full_block}"
         ]
     ],
     "rewards": {
         "recipes": [
-            "suprememc:redblock_slab"
+            "{mod_name}:{id}"
         ]
     }
 }

@@ -47,41 +47,23 @@ Each entry in your `input.json` must specify a valid `type`. These types corresp
     - `pickaxe`: `"stone"` or `"iron"` — adds to `needs_stone_tool` or `needs_iron_tool`
     - `beacon_block`: `true` — adds to `beacon_base_blocks`
 
----
-
-### Item Types
-
-- **item**  
-  A basic standalone item.  
-  - Required fields: `id`, `name`
-
-- **item/gem**  
-  Craftable gem items (e.g., ruby, diamond).  
-  - Required fields: `id`, `name`, `gem_block`  
+- **block/slab**  
+  Half-height blocks.  
+  - Required fields: `id`, `name`, `full_block`  
   - Optional fields:
-    - `beacon_payment`: `true` — adds to `items/beacon_payment_items`
+    - `tool`: `"axe"`, `"hoe"`, `"pickaxe"`, `"shovel"` — adds to `blocks/mineable/<tool>`
 
-- **Tool Items**  
-  Types: `item/axe`, `item/hoe`, `item/pickaxe`, `item/shovel`, `item/sword`  
-  - Required fields: `id`, `name`, `material`
+- **block/stairs**  
+  Stairs with shape handling.  
+  - Required fields: `id`, `name`, `full_block`  
+  - Optional fields:
+    - `tool`: `"axe"`, `"hoe"`, `"pickaxe"`, `"shovel"` — adds to `blocks/mineable/<tool>`
 
-- **Armor Items**  
-  Types: `item/helmet`, `item/chestplate`, `item/leggings`, `item/boots`  
-  - Required fields: `id`, `name`, `material`
-
----
-
-### Set Types
-
-Set types automatically generate full sets of tool or armor entries based on a base ID and material.
-
-- **set/tools**  
-  Generates: `axe`, `pickaxe`, `shovel`, `sword`, `hoe`  
-  - Required fields: `id`, `name`, `material`
-
-- **set/armor**  
-  Generates: `helmet`, `chestplate`, `leggings`, `boots`  
-  - Required fields: `id`, `name`, `material`
+- **block/wall**  
+  Wall blocks for fences and partitions.  
+  - Required fields: `id`, `name`, `full_block`  
+  - Optional fields:
+    - `tool`: `"axe"`, `"hoe"`, `"pickaxe"`, `"shovel"` — adds to `blocks/mineable/<tool>`
 
 ---
 
@@ -91,6 +73,9 @@ Set types automatically generate full sets of tool or armor entries based on a b
 |-------------------|--------------------------|
 | block             | id, name                 |
 | block/gemblock    | id, name, gem            |
+| block/slab        | id, name, full_block     |
+| block/stairs      | id, name, full_block     |
+| block/wall        | id, name, full_block     |
 | item              | id, name                 |
 | item/gem          | id, name, gem_block      |
 | item/axe          | id, name, material       |
@@ -107,31 +92,8 @@ Set types automatically generate full sets of tool or armor entries based on a b
 
 ---
 
-## Output Directory Structure
-
-Generated files are written to the following structure:
-
-resources/  
-├── assets/  
-│   └── <mod_name>/  
-│       ├── blockstates/  
-│       ├── models/  
-│       │   ├── block/  
-│       │   └── item/  
-│       └── lang/  
-└── data/  
-    ├── minecraft/  
-    │   └── tags/  
-    │       ├── blocks/  
-    │       └── items/  
-    └── <mod_name>/  
-        ├── recipes/  
-        ├── advancements/  
-        └── loot_tables/
-
----
-
 ## Example Input
+```json
 [
   {
     "type": "item/gem",
@@ -147,5 +109,27 @@ resources/
     "gem": "ruby",
     "pickaxe": "iron",
     "beacon_block": true
+  },
+  {
+    "type": "block/slab",
+    "id": "ruby_slab",
+    "name": "Ruby Slab",
+    "full_block": "ruby_block",
+    "tool": "pickaxe"
+  },
+  {
+    "type": "block/stairs",
+    "id": "ruby_stairs",
+    "name": "Ruby Stairs",
+    "full_block": "ruby_block",
+    "tool": "pickaxe"
+  },
+  {
+    "type": "block/wall",
+    "id": "ruby_wall",
+    "name": "Ruby Wall",
+    "full_block": "ruby_block",
+    "tool": "pickaxe"
   }
 ]
+

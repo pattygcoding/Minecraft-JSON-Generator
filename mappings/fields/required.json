@@ -6,7 +6,27 @@
         "id",
         "gem"
     ],
+    "block/button": [
+        "id",
+        "full_block"
+    ],
+    "block/door": [
+        "id",
+        "full_block"
+    ],
+    "block/pressure_plate": [
+        "id",
+        "full_block"
+    ],
     "block/slab": [
+        "id",
+        "full_block"
+    ],
+    "block/stairs": [
+        "id",
+        "full_block"
+    ],
+    "block/wall": [
         "id",
         "full_block"
     ],

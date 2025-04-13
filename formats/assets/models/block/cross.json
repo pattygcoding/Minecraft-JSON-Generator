@@ -1,0 +1,6 @@
+{
+   "parent": "minecraft:block/cross",
+   "textures": {
+       "cross": "{mod_name}:block/{id}"
+   }
+}
